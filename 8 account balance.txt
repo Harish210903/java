@@ -1,0 +1,104 @@
+import java.util.Scanner;
+
+class BankAccount {
+    private String depositorName;
+    private long accountNumber;
+    private String accountType;
+    private double balance;
+
+    public void readAccountDetails() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter account number: ");
+        accountNumber = scanner.nextLong();
+
+        scanner.nextLine(); // Consume the newline character
+
+        System.out.print("Enter depositor name: ");
+        depositorName = scanner.nextLine();
+
+        System.out.print("Enter account type (Savings/Current): ");
+        accountType = scanner.nextLine();
+
+        balance = 10000.0; // Initial balance assumed to be Rs. 10000.00
+    }
+
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println("Amount deposited successfully. Updated balance: Rs. " + balance);
+        } else {
+            System.out.println("Invalid amount for deposit. Please enter a positive amount.");
+        }
+    }
+
+    public void withdraw(double amount) {
+        if (amount > 0) {
+            double minimumBalance = 500.0;
+
+            if (balance - amount >= minimumBalance) {
+                balance -= amount;
+                System.out.println("Amount withdrawn successfully. Updated balance: Rs. " + balance);
+            } else {
+                System.out.println("Insufficient balance. Minimum balance should be maintained.");
+            }
+        } else {
+            System.out.println("Invalid amount for withdrawal. Please enter a positive amount.");
+        }
+    }
+
+    public void displayBalance() {
+        System.out.println("Account Details:");
+        System.out.println("Depositor Name: " + depositorName);
+        System.out.println("Account Number: " + accountNumber);
+        System.out.println("Account Type: " + accountType);
+        System.out.println("Current Balance: Rs. " + balance);
+    }
+}
+
+public class BankAccountDemo {
+    public static void main(String[] args) {
+        BankAccount account = new BankAccount();
+
+        // Reading account details
+        account.readAccountDetails();
+
+        // Displaying initial balance
+        account.displayBalance();
+
+        // Depositing an amount
+        account.deposit(2000.0);
+
+        // Displaying updated balance after deposit
+        account.displayBalance();
+
+        // Withdrawing an amount
+        account.withdraw(1500.0);
+
+        // Displaying updated balance after withdrawal
+        account.displayBalance();
+    }
+}
+
+
+
+Enter account number: 123456789
+Enter depositor name: John Doe
+Enter account type (Savings/Current): Savings
+Account Details:
+Depositor Name: John Doe
+Account Number: 123456789
+Account Type: Savings
+Current Balance: Rs. 10000.0
+Amount deposited successfully. Updated balance: Rs. 12000.0
+Account Details:
+Depositor Name: John Doe
+Account Number: 123456789
+Account Type: Savings
+Current Balance: Rs. 12000.0
+Amount withdrawn successfully. Updated balance: Rs. 10500.0
+Account Details:
+Depositor Name: John Doe
+Account Number: 123456789
+Account Type: Savings
+Current Balance: Rs. 10500.0

@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class ATMAmountCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int[] denominations = {1000, 500, 100, 50, 20, 10, 5, 2, 1};
+        int[] noteCount = new int[denominations.length];
+
+        System.out.println("Enter the count of each currency note:");
+
+        for (int i = 0; i < denominations.length; i++) {
+            System.out.print("Count of " + denominations[i] + " rupee notes: ");
+            noteCount[i] = scanner.nextInt();
+        }
+
+        int totalAmount = calculateTotalAmount(denominations, noteCount);
+
+        System.out.println("Total amount available in the ATM machine: " + totalAmount + " rupees");
+
+        scanner.close();
+    }
+
+    private static int calculateTotalAmount(int[] denominations, int[] noteCount) {
+        int totalAmount = 0;
+
+        for (int i = 0; i < denominations.length; i++) {
+            totalAmount += denominations[i] * noteCount[i];
+        }
+
+        return totalAmount;
+    }
+}
+
+
+
+Enter the count of each currency note:
+Count of 1000 rupee notes: 10
+Count of 500 rupee notes: 5
+Count of 100 rupee notes: 20
+Count of 50 rupee notes: 15
+Count of 20 rupee notes: 30
+Count of 10 rupee notes: 25
+Count of 5 rupee notes: 40
+Count of 2 rupee notes: 50
+Count of 1 rupee notes: 100
+Total amount available in the ATM machine: 4870 rupees

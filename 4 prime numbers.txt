@@ -1,0 +1,54 @@
+import java.util.Scanner;
+
+public class PrimeNumberPrinter {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the value of n: ");
+        int n = scanner.nextInt();
+
+        System.out.print("Enter the nth prime number: ");
+        int nthPrime = scanner.nextInt();
+
+        printNPrimeNumbersAfterNth(n, nthPrime);
+
+        scanner.close();
+    }
+
+    private static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static void printNPrimeNumbersAfterNth(int n, int nthPrime) {
+        int count = 0;
+        int currentNum = nthPrime + 1;
+
+        System.out.println("The first " + n + " prime numbers after the " + nthPrime + "th prime number:");
+
+        while (count < n) {
+            if (isPrime(currentNum)) {
+                System.out.print(currentNum + " ");
+                count++;
+            }
+            currentNum++;
+        }
+
+        System.out.println(); // Move to the next line after printing the prime numbers
+    }
+}
+
+
+
+
+Enter the value of n: 5
+Enter the nth prime number: 10
+The first 5 prime numbers after the 10th prime number:
+11 13 17 19 23

@@ -1,0 +1,69 @@
+import java.util.Scanner;
+
+public class PalindromeChecker {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Palindrome Checker");
+        System.out.println("1. Check if a string is palindrome");
+        System.out.println("2. Check if a number is palindrome");
+        System.out.print("Enter your choice (1 or 2): ");
+
+        int choice = scanner.nextInt();
+
+        switch (choice) {
+            case 1:
+                System.out.print("Enter a string: ");
+                String inputString = scanner.next();
+                if (isPalindrome(inputString)) {
+                    System.out.println("The given string is a palindrome.");
+                } else {
+                    System.out.println("The given string is not a palindrome.");
+                }
+                break;
+
+            case 2:
+                System.out.print("Enter a number: ");
+                int inputNumber = scanner.nextInt();
+                if (isPalindrome(inputNumber)) {
+                    System.out.println("The given number is a palindrome.");
+                } else {
+                    System.out.println("The given number is not a palindrome.");
+                }
+                break;
+
+            default:
+                System.out.println("Invalid choice. Please enter either 1 or 2.");
+        }
+
+        scanner.close();
+    }
+
+    private static boolean isPalindrome(String str) {
+        String reversedStr = new StringBuilder(str).reverse().toString();
+        return str.equals(reversedStr);
+    }
+
+    private static boolean isPalindrome(int num) {
+        int originalNum = num;
+        int reversedNum = 0;
+
+        while (num > 0) {
+            int digit = num % 10;
+            reversedNum = reversedNum * 10 + digit;
+            num /= 10;
+        }
+
+        return originalNum == reversedNum;
+    }
+}
+
+
+
+Palindrome Checker
+1. Check if a string is palindrome
+2. Check if a number is palindrome
+Enter your choice (1 or 2): 1
+Enter a string: radar
+The given string is a palindrome.
+

@@ -1,0 +1,41 @@
+class Bank {
+    double getRateOfInterest() {
+        return 0; // Default implementation, specific banks will override this
+    }
+}
+
+class SBI extends Bank {
+    double getRateOfInterest() {
+        return 8.4;
+    }
+}
+
+class ICICI extends Bank {
+    double getRateOfInterest() {
+        return 7.3;
+    }
+}
+
+class AXIS extends Bank {
+    double getRateOfInterest() {
+        return 9.7;
+    }
+}
+
+public class InterestRateExample {
+    public static void main(String[] args) {
+        SBI sbi = new SBI();
+        ICICI icici = new ICICI();
+        AXIS axis = new AXIS();
+
+        System.out.println("SBI Interest Rate: " + sbi.getRateOfInterest() + "%");
+        System.out.println("ICICI Interest Rate: " + icici.getRateOfInterest() + "%");
+        System.out.println("AXIS Interest Rate: " + axis.getRateOfInterest() + "%");
+    }
+}
+
+
+
+SBI Interest Rate: 8.4%
+ICICI Interest Rate: 7.3%
+AXIS Interest Rate: 9.7%

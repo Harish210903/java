@@ -1,0 +1,51 @@
+import java.util.HashSet;
+import java.util.Set;
+
+public class UniquePermutations {
+    public static void main(String[] args) {
+        int number = 123;
+
+        System.out.println("Unique permutations of " + number + ":");
+        printUniquePermutations(number);
+    }
+
+    private static void printUniquePermutations(int number) {
+        String numberStr = String.valueOf(number);
+        int length = numberStr.length();
+        char[] numArray = numberStr.toCharArray();
+
+        Set<String> uniquePermutations = new HashSet<>();
+        generatePermutations(numArray, 0, length - 1, uniquePermutations);
+
+        for (String permutation : uniquePermutations) {
+            System.out.println(permutation);
+        }
+    }
+
+    private static void generatePermutations(char[] numArray, int start, int end, Set<String> result) {
+        if (start == end) {
+            result.add(new String(numArray));
+        } else {
+            for (int i = start; i <= end; i++) {
+                swap(numArray, start, i);
+                generatePermutations(numArray, start + 1, end, result);
+                swap(numArray, start, i); // Backtrack
+            }
+        }
+    }
+
+    private static void swap(char[] array, int i, int j) {
+        char temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+}
+
+
+Unique permutations of 123:
+123
+132
+213
+231
+312
+321

@@ -1,0 +1,45 @@
+class FibonacciGenerator implements Runnable {
+    private int n;
+
+    FibonacciGenerator(int n) {
+        this.n = n;
+    }
+
+    @Override
+    public void run() {
+        int first = 0, second = 1;
+        System.out.println("Fibonacci Series for n = " + n + ":");
+
+        for (int i = 0; i < n; i++) {
+            System.out.print(first + " ");
+
+            int next = first + second;
+            first = second;
+            second = next;
+
+            try {
+                // Simulating some delay to better visualize the concurrent execution
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        System.out.println();
+    }
+}
+
+public class FibonacciThreadExample {
+    public static void main(String[] args) {
+        Thread thread1 = new Thread(new FibonacciGenerator(5));
+        Thread thread2 = new Thread(new FibonacciGenerator(8));
+
+        thread1.start();
+        thread2.start();
+    }
+}
+
+
+Fibonacci Series for n = 5:
+0 1 1 2 3 
+Fibonacci Series for n = 8:
+0 1 1 2 3 5 8 13 

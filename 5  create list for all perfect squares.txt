@@ -1,0 +1,44 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class PerfectSquareList {
+    public static void main(String[] args) {
+        int startRange = 1;
+        int endRange = 100;
+
+        List<Integer> perfectSquareList = findPerfectSquaresWithDigitSumLessThan10(startRange, endRange);
+
+        System.out.println("Perfect squares with digit sum less than 10 in the range " +
+                startRange + " to " + endRange + ": " + perfectSquareList);
+    }
+
+    private static List<Integer> findPerfectSquaresWithDigitSumLessThan10(int start, int end) {
+        List<Integer> result = new ArrayList<>();
+
+        for (int i = start; i <= end; i++) {
+            if (isPerfectSquare(i) && digitSumLessThan10(i)) {
+                result.add(i);
+            }
+        }
+
+        return result;
+    }
+
+    private static boolean isPerfectSquare(int num) {
+        int sqrt = (int) Math.sqrt(num);
+        return sqrt * sqrt == num;
+    }
+
+    private static boolean digitSumLessThan10(int num) {
+        int sum = 0;
+        while (num > 0) {
+            sum += num % 10;
+            num /= 10;
+        }
+        return sum < 10;
+    }
+}
+
+
+
+Perfect squares with digit sum less than 10 in the range 1 to 100: [1, 4, 9, 16, 25, 36, 49, 64, 81]

@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+public class SumOfNNumbers {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the size (N) of the array: ");
+        int n = scanner.nextInt();
+
+        int[] numbers = new int[n];
+
+        System.out.println("Enter " + n + " numbers:");
+
+        for (int i = 0; i < n; i++) {
+            numbers[i] = scanner.nextInt();
+        }
+
+        try {
+            int sum = calculateSum(numbers);
+            System.out.println("Sum of the entered numbers: " + sum);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Error: ArrayIndexOutOfBoundsException - Loop variable beyond the size N.");
+        }
+
+        scanner.close();
+    }
+
+    private static int calculateSum(int[] array) {
+        int sum = 0;
+
+        // Simulating ArrayIndexOutOfBoundsException by incrementing loop variable beyond the size N
+        for (int i = 0; i <= array.length; i++) {
+            sum += array[i];
+        }
+
+        return sum;
+    }
+}
+
+
+
+Enter the size (N) of the array: 3
+Enter 3 numbers:
+10 20 30
+Error: ArrayIndexOutOfBoundsException - Loop variable beyond the size N.

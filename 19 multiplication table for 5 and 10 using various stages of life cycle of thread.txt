@@ -1,0 +1,90 @@
+class MultiplicationTableThread extends Thread {
+    private int number;
+
+    MultiplicationTableThread(int number) {
+        this.number = number;
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Thread " + number + " started");
+
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(number + " * " + i + " = " + (number * i));
+
+            try {
+                // Simulating some work or delay
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        System.out.println("Thread " + number + " completed");
+    }
+}
+
+public class ThreadLifeCycleExample {
+    public static void main(String[] args) {
+        System.out.println("Main thread started");
+
+        MultiplicationTableThread thread5 = new MultiplicationTableThread(5);
+        MultiplicationTableThread thread10 = new MultiplicationTableThread(10);
+
+        // Thread state: NEW
+        System.out.println("Thread 5 state: " + thread5.getState());
+        System.out.println("Thread 10 state: " + thread10.getState());
+
+        // Thread state: RUNNABLE
+        thread5.start();
+        thread10.start();
+
+        // Thread state: TIMED_WAITING
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Thread state: TERMINATED
+        System.out.println("Thread 5 state: " + thread5.getState());
+        System.out.println("Thread 10 state: " + thread10.getState());
+
+        System.out.println("Main thread completed");
+    }
+}
+
+
+
+Main thread started
+Thread 5 state: NEW
+Thread 10 state: NEW
+Thread 5 started
+Thread 10 started
+5 * 1 = 5
+Thread 5 state: RUNNABLE
+10 * 1 = 10
+Thread 10 state: RUNNABLE
+5 * 2 = 10
+10 * 2 = 20
+5 * 3 = 15
+10 * 3 = 30
+5 * 4 = 20
+10 * 4 = 40
+5 * 5 = 25
+10 * 5 = 50
+Thread 10 state: TIMED_WAITING
+Thread 5 state: TIMED_WAITING
+5 * 6 = 30
+10 * 6 = 60
+5 * 7 = 35
+10 * 7 = 70
+5 * 8 = 40
+10 * 8 = 80
+5 * 9 = 45
+10 * 9 = 90
+5 * 10 = 50
+10 * 10 = 100
+Thread 5 state: TERMINATED
+Thread 10 state: TERMINATED
+Main thread completed

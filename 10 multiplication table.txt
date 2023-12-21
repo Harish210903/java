@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+public class MultiplicationTable {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number (m) for the multiplication table: ");
+        int m = scanner.nextInt();
+
+        System.out.print("Enter the range (n) for the multiplication table: ");
+        int n = scanner.nextInt();
+
+        System.out.println("Multiplication table for " + m + " up to " + n + ":");
+
+        for (int i = 1; i <= n; i++) {
+            System.out.println(m + " * " + i + " = " + (m * i));
+        }
+
+        scanner.close();
+    }
+}
+
+
+Enter the number (m) for the multiplication table: 5
+Enter the range (n) for the multiplication table: 10
+Multiplication table for 5 up to 10:
+5 * 1 = 5
+5 * 2 = 10
+5 * 3 = 15
+5 * 4 = 20
+5 * 5 = 25
+5 * 6 = 30
+5 * 7 = 35
+5 * 8 = 40
+5 * 9 = 45
+5 * 10 = 50
+

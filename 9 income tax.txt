@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+public class IncomeTaxCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the income: ");
+        double income = scanner.nextDouble();
+
+        double taxableIncome = income - 150000; // Assuming a basic exemption of 1,50,000
+
+        double tax = calculateTax(taxableIncome);
+
+        System.out.println("Income: " + income);
+        System.out.println("Taxable Income: " + taxableIncome);
+        System.out.println("Tax to be paid: " + tax);
+
+        scanner.close();
+    }
+
+    private static double calculateTax(double taxableIncome) {
+        if (taxableIncome <= 0) {
+            return 0;
+        } else if (taxableIncome <= 150000) {
+            return 0;
+        } else if (taxableIncome <= 300000) {
+            return taxableIncome * 0.1;
+        } else if (taxableIncome <= 500000) {
+            return taxableIncome * 0.2;
+        } else {
+            return taxableIncome * 0.3;
+        }
+    }
+}
+
+
+
+Enter the income: 200000
+Income: 200000.0
+Taxable Income: 50000.0
+Tax to be paid: 5000.0

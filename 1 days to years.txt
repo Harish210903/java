@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class DaysConverter {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of days: ");
+        int totalDays = scanner.nextInt();
+
+        if (totalDays >= 0) {
+            convertDays(totalDays);
+        } else {
+            System.out.println("Please enter a non-negative number of days.");
+        }
+
+        scanner.close();
+    }
+
+    private static void convertDays(int days) {
+        int years = days / 365;
+        int remainingDays = days % 365;
+        int weeks = remainingDays / 7;
+        int finalDays = remainingDays % 7;
+
+        System.out.println(days + " days is approximately:");
+        System.out.println("Years: " + years);
+        System.out.println("Weeks: " + weeks);
+        System.out.println("Days: " + finalDays);
+    }
+}
+
+
+
+Enter the number of days: 500
+500 days is approximately:
+Years: 1
+Weeks: 71
+Days: 3

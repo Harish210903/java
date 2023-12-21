@@ -1,0 +1,43 @@
+class PrimeChecker implements Runnable {
+    private int number;
+
+    PrimeChecker(int number) {
+        this.number = number;
+    }
+
+    @Override
+    public void run() {
+        if (isPrime(number)) {
+            System.out.println(number + " is a prime number.");
+        } else {
+            System.out.println(number + " is not a prime number.");
+        }
+    }
+
+    private boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+public class PrimeCheckThreadExample {
+    public static void main(String[] args) {
+        Thread thread1 = new Thread(new PrimeChecker(17));
+        Thread thread2 = new Thread(new PrimeChecker(25));
+
+        thread1.start();
+        thread2.start();
+    }
+}
+
+
+17 is a prime number.
+25 is not a prime number.
